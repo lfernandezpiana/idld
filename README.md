@@ -16,8 +16,8 @@ You can install the released version of idld from
 [GITHUB](https://www.github.com) with:
 
 ``` r
-install.package("remote")
-remote::install_github("lfernandezpiana/idld")
+install.packages("remotes")
+remotes::install_github("lfernandezpiana/idld")
 ```
 
 ## Multivariate Example
