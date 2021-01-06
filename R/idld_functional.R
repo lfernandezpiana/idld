@@ -20,6 +20,7 @@
 #' local_depth = idld_f(m_functional_data, m_functional_data, 0.3, 500, TRUE)
 #' @export
 #' @importFrom dplyr "%>%"
+#' @importFrom sde BM
 
 ## Local Integrated Dual Depth
 

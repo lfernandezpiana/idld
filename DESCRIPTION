@@ -3,13 +3,15 @@ Type: Package
 Title: Integrated Dual Local Depth
 Version: 1.0
 Date: 2020-12-31
-Author: Marcela Svarc, Lucas Fernandez Piana
+Author: Lucas Fernandez Piana, Marcela Svarc
 Maintainer: Lucas Fernandez Piana <lucasfernandezpiana@gmail.com>
 Description: The Integrated Dual Local Depth is a local depth measure for data in a Banach space based on the use of 
              one-dimensional projections. This package contains the functions for calculations in finite dimensional spaces
              and the case of functional data (infinite dimensional). 
-License: MIT
-Imports: Rcpp (>= 1.0.5), mvnfast, sde
+License: GPL
+Imports: Rcpp (>= 1.0.5), 
+         mvnfast (>= 0.2.5),  
+         sde (>= 2.0.15)
 LinkingTo: Rcpp, RcppEigen
 LazyData: true
 RoxygenNote: 7.1.1

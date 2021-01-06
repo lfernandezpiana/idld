@@ -26,6 +26,7 @@
 #' 
 #' @export
 #' @importFrom dplyr "%>%"
+#' @importFrom mvnfast rmvn
 
 
 ## Integrated Local Dual Depth

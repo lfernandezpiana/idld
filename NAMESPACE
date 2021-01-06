@@ -1,4 +1,6 @@
 useDynLib(idld)
 import(RcppEigen)
 importFrom(Rcpp, evalCpp)
+importFrom(sde, BM)
+importFrom(mvnfast, rmvn)
 exportPattern("^[[:alpha:]]+")

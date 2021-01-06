@@ -2,7 +2,7 @@
 % Please edit documentation in R/idld_multivariated.R
 \name{idld_m}
 \alias{idld_m}
-\title{idld_m}
+\title{Multivariate Integrated Dual Local Depth}
 \arguments{
 \item{Z}{data to apply depth. It should be a numeric matrix where each row represents an observation.}
 
@@ -26,7 +26,7 @@ X = rmvn(90,  c(-2,-2), sigma=diag(rep(1,2)))
 Y = rmvn(110, c(2,2), sigma=diag(rep(1,2)))
 Z = rmvn(150, c(4,-4), sigma = rbind(c(2,0.8),c(0.8,1)))
 W = rbind(X,Y,Z)
-local_depth = idld(W,W,0.3,500,TRUE)
+local_depth = idld_m(W, W ,0.3, 500, TRUE)
 plot(W, pch=20)
 local_depth_center_region = which(local_depth>quantile(local_depth,0.9))
 points(W[local_depth_center_region,], col="blue", pch=20)
