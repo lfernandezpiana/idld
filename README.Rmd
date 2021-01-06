@@ -1,0 +1,62 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# idld
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of idld is to ...
+
+## Installation
+
+You can install the released version of idld from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("idld")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(idld)
+library(mvnfast)
+X = rmvn(90,  c(-2,-2), sigma=diag(rep(1,2)))
+Y = rmvn(110, c(2,2), sigma=diag(rep(1,2)))
+Z = rmvn(150, c(4,-4), sigma = rbind(c(2,0.8),c(0.8,1)))
+W = rbind(X,Y,Z)
+local_depth = idld(W, W ,0.3, 500, TRUE)
+plot(W, pch=20)
+local_depth_center_region = which(local_depth>quantile(local_depth,0.9))
+points(W[local_depth_center_region,], col="blue", pch=20)
+```
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
