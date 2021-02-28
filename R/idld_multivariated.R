@@ -29,16 +29,7 @@
 #' @importFrom mvnfast rmvn
 
 
-## Integrated Local Dual Depth
-
-## Z (numeric matrix): data to apply depth. Z must be a numeric matrix where  
-# each row represents an observation.
-## datos (numeric matrix): data on which the depth is based. 
-# datos must be a numeric matrix where each row represents an observation.
-## beta (float): locality parameter, beta range in (0,1]. For beta = 1 lidd_cpp 
-# returns global Integrated Dual Depth.
-## m (int): number of random projections.
-## verbose (bool): if TRUE prints the algorithm progress.
+## Integrated Dual Local Depth
 
 require(mvnfast)
 

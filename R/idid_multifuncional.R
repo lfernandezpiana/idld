@@ -26,18 +26,11 @@
 #' @importFrom dplyr "%>%"
 #' @importFrom sde BM
 
-## Local Integrated Dual Depth
-
-## Z (numeric array): data to apply depth. Z must be a numeric array of dimension (n,p,l) where  
-# l is the number of fuctional coordinates. Z[,,i] is a matrix where each row represents an observation for i=1,...,l.
-## data_f (numeric array): data on which the depth is based. Same format than Z.
-## beta (float): locality parameter, beta range in (0,1]. For beta = 1 idld_mf returns global Integrated Dual Depth.
-## m (int): number of random projections.
-## verbose (bool): if TRUE prints the algorithm progress.
+## Integrated Dual Local Depth
 
 require(sde)
 
-idld_mf = function(Z,data_mf,beta,m,verbose)
+idld_mf = function(Z, data_mf, beta, m, verbose)
 {
   d_mf = dim(data_mf)
   d_Z = dim(Z)

@@ -11,7 +11,10 @@ Description: The Integrated Dual Local Depth is a local depth measure for data i
 License: GPL
 Imports: Rcpp (>= 1.0.5), 
          mvnfast (>= 0.2.5),  
-         sde (>= 2.0.15)
+         sde (>= 2.0.15),
+         abind,
+         class,
+         cluster
 LinkingTo: Rcpp, RcppEigen
 LazyData: true
 RoxygenNote: 7.1.1

@@ -14,10 +14,9 @@
 #' @return A numeric vector object that contains the depth for each point. 
 #' 
 #' @examples
-#' data(growth_domestic_product)
 #' data(inflation_rate)
-#' m_functional_data = as.matrix(cbind(growth_domestic_product[,-1]/400,inflation_rate[,-1]))
-#' local_depth = idld_f(m_functional_data, m_functional_data, 0.3, 500, TRUE)
+#' inflation = as.matrix(inflation_rate[,-1])
+#' local_depth = idld_f(inflation, inflation, 0.3, 500, TRUE)
 #' @export
 #' @importFrom dplyr "%>%"
 #' @importFrom sde BM

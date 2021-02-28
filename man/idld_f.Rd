@@ -21,8 +21,7 @@ A numeric vector object that contains the depth for each point.
 Calculates the integrated dual local depth for functional data and multivariate functional data.
 }
 \examples{
-data(growth_domestic_product)
 data(inflation_rate)
-m_functional_data = as.matrix(cbind(growth_domestic_product[,-1]/400,inflation_rate[,-1]))
-local_depth = idld_f(m_functional_data, m_functional_data, 0.3, 500, TRUE)
+inflation_rate = as.matrix(inflation_rate)
+local_depth = idld_f(inflation_rate, inflation_rate, 0.3, 500, TRUE)
 }
