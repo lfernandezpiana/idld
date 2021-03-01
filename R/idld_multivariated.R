@@ -1,4 +1,4 @@
-#### CALCULA LA PROFUNDIDAD DUAL INTEGRADA LOCAL VERSION c++
+#### INTEGRATED DUAL LOCAL DEPTH MULTIVARIATE CASE
 
 #' @name idld_m
 #' @title Multivariate Integrated Dual Local Depth

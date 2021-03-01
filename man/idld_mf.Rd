@@ -7,7 +7,7 @@
 \item{Z}{data to apply depth. It should be an array of dimension (n,p,l) where l is the number of functional coordinates. 
 Z[,,i] is a numeric matrix where each row represents a functional observation for i=1,...,l.}
 
-\item{data_f}{data on which depth is based. Same format than Z.}
+\item{data_mf}{data on which depth is based. Same format than Z.}
 
 \item{beta}{locality parameter between 0 and 1}
 

@@ -22,6 +22,6 @@ Calculates the integrated dual local depth for functional data and multivariate 
 }
 \examples{
 data(inflation_rate)
-inflation_rate = as.matrix(inflation_rate)
-local_depth = idld_f(inflation_rate, inflation_rate, 0.3, 500, TRUE)
+inflation = as.matrix(inflation_rate[,-1])
+local_depth = idld_f(inflation, inflation, 0.3, 500, TRUE)
 }

@@ -14,7 +14,8 @@ Imports: Rcpp (>= 1.0.5),
          sde (>= 2.0.15),
          abind,
          class,
-         cluster
+         cluster,
+         mclust
 LinkingTo: Rcpp, RcppEigen
 LazyData: true
 RoxygenNote: 7.1.1

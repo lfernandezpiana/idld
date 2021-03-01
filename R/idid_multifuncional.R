@@ -1,4 +1,4 @@
-#### CALCULA LA PROFUNDIDAD DUAL INTEGRADA LOCAL VERSION c++
+#### INTEGRATED DUAL LOCAL DEPTH MULTIVARIATE FUNCTIONAL CASE
 
 #' @name idld_mf
 #' @title Functional Integrated Dual Local Depth
@@ -7,7 +7,7 @@
 #'
 #' @param Z data to apply depth. It should be an array of dimension (n,p,l) where l is the number of functional coordinates. 
 #' Z[,,i] is a numeric matrix where each row represents a functional observation for i=1,...,l.
-#' @param data_f data on which depth is based. Same format than Z.
+#' @param data_mf data on which depth is based. Same format than Z.
 #' @param beta locality parameter between 0 and 1
 #' @param m number of random projections
 #' @param verbose if TRUE prints the algorithm progress.

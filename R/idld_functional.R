@@ -1,4 +1,4 @@
-#### CALCULA LA PROFUNDIDAD DUAL INTEGRADA LOCAL VERSION c++
+#### INTEGRATED DUAL LOCAL DEPTH FUNCTIONAL CASE
 
 #' @name idld_f
 #' @title Functional Integrated Dual Local Depth
