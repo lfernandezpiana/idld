@@ -35,10 +35,9 @@ idld_cluster = function(Z, beta, m, alpha_quantile, K, type, verbose=FALSE) {
   #Z: data that will be assigned local depth. Matrix each row is an observation, for bivariate functional data put one coordinate next to the other, both coordinates are assumed to have the same length.
   #datos: data set regarding which the local depth is measured. Matrix each row is an observation, for multifunctional data put one coordinate next to the other.
   #beta: locality parameter.
-  #m=number or random directions where the data is projected.
+  #m: number or random directions where the data is projected.
   #alpha_quantile: grid of values to select de deepest region  (Ojo Lucas que vos siempre pensas en q y esto es alfa, es decir 1-q).
   #k: number of clusters.
-  #B: number of boostrap samples, is a_grid has only one value put B=0.
   #verbose = if TRUE prints the progress 
   #OUTPUT
   #a.optimal= alpha optimal value
@@ -83,59 +82,59 @@ idld_cluster = function(Z, beta, m, alpha_quantile, K, type, verbose=FALSE) {
 }
   
   
-idld_cluster_boot = function(Z, beta, m, K, B, type, verbose=FALSE) {
-  #INPUT
-  #Z: data that will be assigned local depth. Matrix each row is an observation, for bivariate functional data put one coordinate next to the other, both coordinates are assumed to have the same length.
-  #datos: data set regarding which the local depth is measured. Matrix each row is an observation, for multifunctional data put one coordinate next to the other.
-  #beta: locality parameter.
-  #m=number or random directions where the data is projected.
-  #alpha_quantile: grid of values to select de deepest region  (Ojo Lucas que vos siempre pensas en q y esto es alfa, es decir 1-q).
-  #k: number of clusters.
-  #B: number of boostrap samples, is a_grid has only one value put B=0.
-  #verbose = if TRUE prints the progress 
-  #OUTPUT
-  #a.optimal= alpha optimal value
-  #clusters_optimal: clustering allocation.
-  alpha_quantile = seq(0.5,0.9,0.1)
-  n_grid = length(alpha_quantile)
-  aris = matrix(nrow=B, ncol=n_grid)
-  cluster_original = idld_cluster(Z, beta, m, alpha_quantile, K, type, verbose=FALSE)$clusters
-  ## Generating bootstrap samples
-  if (type == "multi_functional") {
-    for (b in 1:B) {
-      b_ind = sample(1:dim(Z)[1], dim(Z)[1], replace=TRUE) # boostrap sample indices
-      Z_b = Z[b_ind,,] # bootstrap sample
-      c_b = idld_cluster(Z_b, beta, m, alpha_quantile, K, type, verbose=FALSE)$clusters
-      # compare only the same observations
-      c_b = c_b[unique(b_ind),]
-      c_o = cluster_original[b_ind,]
-      c_o = c_o[unique(b_ind),]
-      # Rand index
-      for (j in 1:n_grid) {
-        aris[b,j]=adjustedRandIndex(c_o[,j],c_b[,j])
-      }
-    }
-  } else {
-    for (b in 1:B) {
-      b_ind = sample(1:dim(Z)[1], dim(Z)[1], replace=TRUE) # boostrap sample indices
-      Z_b = Z[b_ind,] # bootstrap sample
-      c_b = idld_cluster(Z_b, beta, m, alpha_quantile, K, type, verbose=FALSE)$clusters
-      # compare only the same observations
-      c_b = c_b[unique(b_ind),]
-      c_o = cluster_original[b_ind,]
-      c_o = c_o[unique(b_ind),]
-      # Rand index
-      for (j in 1:n_grid) {
-        aris[b,j]=adjustedRandIndex(c_o[,j],c_b[,j])
-      }
-    }
-  }
-  mean_aris = apply(aris,2,mean)
-  opt_alpha = which.max(mean_aris)
-  salida = list(aris, mean_aris, cluster_original[,opt_alpha])
-  names(salida) = c("aris","mean_aris","clusters_optimal")
-  return(salida)
-}
+# idld_cluster_boot = function(Z, beta, m, K, B, type, verbose=FALSE) {
+#   #INPUT
+#   #Z: data that will be assigned local depth. Matrix each row is an observation, for bivariate functional data put one coordinate next to the other, both coordinates are assumed to have the same length.
+#   #datos: data set regarding which the local depth is measured. Matrix each row is an observation, for multifunctional data put one coordinate next to the other.
+#   #beta: locality parameter.
+#   #m=number or random directions where the data is projected.
+#   #alpha_quantile: grid of values to select de deepest region  (Ojo Lucas que vos siempre pensas en q y esto es alfa, es decir 1-q).
+#   #k: number of clusters.
+#   #B: number of boostrap samples, is a_grid has only one value put B=0.
+#   #verbose = if TRUE prints the progress 
+#   #OUTPUT
+#   #a.optimal= alpha optimal value
+#   #clusters_optimal: clustering allocation.
+#   alpha_quantile = seq(0.5,0.9,0.1)
+#   n_grid = length(alpha_quantile)
+#   aris = matrix(nrow=B, ncol=n_grid)
+#   cluster_original = idld_cluster(Z, beta, m, alpha_quantile, K, type, verbose=FALSE)$clusters
+#   ## Generating bootstrap samples
+#   if (type == "multi_functional") {
+#     for (b in 1:B) {
+#       b_ind = sample(1:dim(Z)[1], dim(Z)[1], replace=TRUE) # boostrap sample indices
+#       Z_b = Z[b_ind,,] # bootstrap sample
+#       c_b = idld_cluster(Z_b, beta, m, alpha_quantile, K, type, verbose=FALSE)$clusters
+#       # compare only the same observations
+#       c_b = c_b[unique(b_ind),]
+#       c_o = cluster_original[b_ind,]
+#       c_o = c_o[unique(b_ind),]
+#       # Rand index
+#       for (j in 1:n_grid) {
+#         aris[b,j]=adjustedRandIndex(c_o[,j],c_b[,j])
+#       }
+#     }
+#   } else {
+#     for (b in 1:B) {
+#       b_ind = sample(1:dim(Z)[1], dim(Z)[1], replace=TRUE) # boostrap sample indices
+#       Z_b = Z[b_ind,] # bootstrap sample
+#       c_b = idld_cluster(Z_b, beta, m, alpha_quantile, K, type, verbose=FALSE)$clusters
+#       # compare only the same observations
+#       c_b = c_b[unique(b_ind),]
+#       c_o = cluster_original[b_ind,]
+#       c_o = c_o[unique(b_ind),]
+#       # Rand index
+#       for (j in 1:n_grid) {
+#         aris[b,j]=adjustedRandIndex(c_o[,j],c_b[,j])
+#       }
+#     }
+#   }
+#   mean_aris = apply(aris,2,mean)
+#   opt_alpha = which.max(mean_aris)
+#   salida = list(aris, mean_aris, cluster_original[,opt_alpha])
+#   names(salida) = c("aris","mean_aris","clusters_optimal")
+#   return(salida)
+# }
   
 
   

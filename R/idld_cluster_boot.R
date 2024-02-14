@@ -97,7 +97,8 @@ idld_cluster_boot = function(Z, beta, m, K, B, type, verbose=FALSE) {
   }
   mean_aris = apply(aris,2,mean)
   opt_alpha = which.max(mean_aris)
-  salida = list(idld_original$depth, idld_original$region[,opt_alpha], cluster_original[,opt_alpha])
-  names(salida) = c("depth","region","clusters")
+  salida = list(idld_original$depth, idld_original$region[,opt_alpha], 
+                cluster_original[,opt_alpha], opt_alpha, mean_aris)
+  names(salida) = c("depth","region","clusters", "alpha", "aris")
   return(salida)
 }
